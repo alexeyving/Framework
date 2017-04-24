@@ -1,0 +1,22 @@
+include ../mixin/inputBlock.pug
+include ../mixin/input.pug
+.card
+   .row
+      .col-xs-12
+         +inputBlock('Номер карты (от 12 до 19 символов)','number-card', 'l-w-100p', 'text', 'XXXX XXXX XXXX XXXX')(tabindex="4")
+   .row.t-a-r
+      .col-xs-12
+         label(for='date-month') Срок действия
+   .row.l-h-30.m-none.pos-a.l-w-130.l-r-8.l-b-49
+      .pos-a.l-r-65
+         +input('date-month', 'l-w-50 t-a-c', 'text', 'MM')(tabindex="5")
+      .pos-a.l-r-55
+         p.separator /
+      .pos-a.l-r-0
+         +input('date-year', 'l-w-50 t-a-c', 'text', 'YY')(tabindex="6")
+   .row.l-mt-16.t-a-l
+      .col-xs-12
+         +inputBlock('Имя Фамилия','cardHolder-name', 'l-w-100p', 'text', 'IVAN IVANOV')(tabindex="7")
+.card.l-zi-negative
+   .l-h-30.s-bg-base(style='margin: 20px -8px 5px -8px')
+   include ./backCard

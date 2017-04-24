@@ -1,0 +1,7 @@
+include ../mixin/inputBlock
+#moved-wrapper-contactsBlock.l-mb-30(style="overflow: hidden;")
+   .col-xs-12.l-mb-10
+      .title-sub.l-mb-15 Ваши контакты
+      +inputBlock('Почта', 'email', 'l-w-200 md(l-w-100p)', 'text', 'Введите адрес эл. почты')(tabindex="1")
+   .col-xs-12
+      +inputBlock('Телефон', 'phone', 'l-w-200 md(l-w-100p)', 'text', 'Введите телефон')(tabindex="2")

@@ -1,0 +1,57 @@
+extends ../extends/index-extend
+
+block content
+	.col-xs-12.col-md-5.l-mb-30
+		.title.pull-left Страница оплаты
+		+card-logos(true)
+	.col-md-7.l-mb-30.hidden-sm.hidden-xs
+		.title.pull-left Оплата банковской картой
+
+	.col-xs-12.col-md-5.l-mb-30
+		.row.l-mb-30
+			.col-xs-12
+				ul.leaders
+					li
+						span Номер заказа
+						span № 1234567891011
+					li
+						span Сумма к оплате
+						span 1 000 000 руб.
+		.row.contacts-block.js-placeholder-contacts-medium
+		.row.l-mb-30
+			.col-xs-12
+				include ../includes/error
+		.row
+			.col-xs-12(style="height:90px")
+				.title Выберите карту
+				.wrapper-select
+					select(style="display:none")
+	.col-xs-12.col-md-7
+		.row.l-h-241
+			.col-xs-12.pos-r.l-zi-1.l-mb-30.cards-wrapper
+				.card.full
+					.row
+						.col-xs-6
+							img.max-w-36(src='./assets/chip.svg', alt='chip')
+						.col-xs-6.t-a-r
+							img.max-w-48(src='./assets/visa.svg', alt='visa')
+					.row.l-mt-30.t-a-l
+						.col-xs-12
+							| **** **** **** 2929
+					.row.l-mt-30.t-a-l
+						.col-xs-12
+							| OLGA NOVICHKOVA
+				.card.l-zi-negative
+					.l-h-30.s-bg-base(style='margin: 20px -8px 5px -8px')
+					include ../includes/backCard
+
+			.col-xs-12.col-md-6.l-mb-30.js-placeholder-submitButton-medium(class="md(t-a-center)")
+		.row.l-mb-30.contacts-block.js-placeholder-contacts-small
+		.row.js-placeholder-submitButton-small
+	.col-xs-12.t-a-l
+		include ../includes/footer
+block scripts
+	script(type="text/javascript").
+		window.onload = function () {
+			new App.views.savedCards();
+		};

@@ -1,0 +1,4 @@
+mixin checkbox(title, id)
+   +input(id, '', 'checkbox')
+   label.fake-label(for=id)
+   label.true-label.regular-text.f-base-xxl(for=id)&attributes(attributes)= title

@@ -1,0 +1,19 @@
+extends ../../extends/index-extend
+block content
+	.center-table
+		.center-table__row
+			.center-table__cell
+				div
+					.max-w-293.center-block.m-b-43
+						img.img-responsive(src='./assets/payment-error.svg')
+					.center-block.max-w-240
+						.regular-text.m-b-20.t-a-c
+							| При загрузке страницы оплаты
+							| произошла ошибка.
+						.regular-text.m-b-20.t-a-c
+							| Попробуйте позже или обратитесь
+							| в чат команды поддержки.
+						button#button-error.l-h-40.l-mb-20.submit.center-block Закрыть
+block scripts
+	script(type="text/javascript").
+		new _hackButton();

@@ -1,0 +1,7 @@
+//Optional palette-specific styles
+input[type=checkbox] {
+  &.hover + .fake-label, &[isHovered] + .fake-label {
+    background: $base-xxs;
+    pointer-events: none;
+  }
+}

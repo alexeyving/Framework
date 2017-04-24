@@ -1,0 +1,22 @@
+extends ../../extends/index-extend
+block content
+	.center-table
+		.center-table__row
+			.center-table__cell
+				div
+					.max-w-293.center-block.m-b-43
+						img.img-responsive(src='./assets/payment-error.svg')
+					.center-block.max-w-320
+						.large-text.m-b-20.t-a-c
+							strong
+								| При загрузке чека произошла ошибка!
+						.regular-text.m-b-20.t-a-c
+							| Платеж совершен, но в&nbsp;процессе формирования
+							| чека возникла непредвиденная ошибка. Вся&nbsp;основная
+							| информация будет выслана Вам на&nbsp;почту.
+						.regular-text.m-b-20.t-a-c
+							| При необходимости обратитесь в&nbsp;чат команды&nbsp;поддержки.
+						button#button-error.l-h-40.l-mb-20.submit.center-block Закрыть
+block scripts
+	script(type="text/javascript").
+		new _hackButton();

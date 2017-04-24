@@ -1,0 +1,16 @@
+//Style for index page
+//TDDO Alesha: remove this before realease
+
+.index-page {
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+  }
+
+  img {
+    width: 350px;
+  }
+}

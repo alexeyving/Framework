@@ -1,0 +1,19 @@
+mixin card-logos(isMobile)
+    if isMobile
+        .pull-right.visible-xs
+            ul.list-inline
+                li
+                    img(src="./assets/mir.svg" height="10px")
+                li
+                    img(src="./assets/visa2.svg" height="10px")
+                li
+                    img(src="./assets/mc.svg" height="16px")
+    else
+        .t-a-r.hidden-xs
+            ul.list-inline
+                li.p-l-24
+                    img.max-w-42(src="./assets/mir.svg")
+                li.p-l-24
+                    img.max-w-49(src="./assets/visa2.svg")
+                li.p-l-24
+                    img.max-w-29(src="./assets/mc.svg")

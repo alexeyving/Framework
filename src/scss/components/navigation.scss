@@ -1,0 +1,25 @@
+.scroll-top {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  background-color: rgba(0,0,0,0.1);
+  font-size: 30px;
+  padding: 7px;
+  @include transition(opactiy, .5s);
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.2);
+  }
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,39 @@
+extends ../extends/index-extend
+
+block content
+	.col-xs-12.col-md-5.l-mb-30
+		.title.pull-left Страница оплаты
+		+card-logos(true)
+	.col-md-7.l-mb-30.hidden-sm.hidden-xs
+		.title.pull-left Введите данные банковской карты
+
+	.col-xs-12.col-md-5.l-mb-30
+		.row.l-mb-30
+			.col-xs-12
+				ul.leaders
+					li
+						span Номер заказа
+						span № 1234567891011
+					li
+						span Сумма к оплате
+						span 1 000 000 руб.
+		.row.contacts-block.js-placeholder-contacts-medium
+		.row
+			.col-xs-12
+				include ../includes/error
+	.col-xs-12.col-md-7
+		.row.l-h-265
+			.col-xs-12.pos-r.l-zi-1.l-mb-30.cards-render.cards-wrapper
+			.col-xs-12.col-md-6.t-a-c
+				.l-dib
+					+checkbox('Сохранить данные карты', 'saveCard')(tabindex="9")
+			.col-xs-12.col-md-6.l-mb-30.js-placeholder-submitButton-medium(class="md(t-a-center)")
+		.row.l-mb-30.contacts-block.js-placeholder-contacts-small
+		.row.js-placeholder-submitButton-small
+	.col-xs-12.t-a-l
+		include ../includes/footer
+block scripts
+	script(type="text/javascript").
+		window.onload = function () {
+			new App.views.paymentProcessView();
+		};

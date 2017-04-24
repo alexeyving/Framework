@@ -1,0 +1,20 @@
+include ../mixin/input
+include ../mixin/inputBlock
+include ../mixin/checkbox
+include ../mixin/cardLogos
+include ../mixin/progressbar
+doctype html
+html(lang='ru')
+	head
+		meta(charset='UTF-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name="format-detection", content="telephone=no")
+		title Оплата Картой
+		link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=cyrillic-ext', rel='stylesheet')
+	body
+		.wrapper
+			.container-fluid
+				.row
+					block content
+	block scripts

@@ -1,0 +1,61 @@
+@for $i from 0 through 100 {
+  .progress progress[value="#{$i}"]
+  {
+    & ~ .progress-bg .progress-bar { width: $i * 1% }
+  }
+}
+
+.progress
+{
+  position: relative;
+  overflow: hidden;
+  progress
+  {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    left: -777px;
+  }
+}
+.progress-bg
+{
+  background: #e6e9ed;
+  position: relative;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+@keyframes progress_bar {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -40px 0;
+  }
+}
+
+.progress-bar
+{
+  overflow: hidden;
+  background: #dedede;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  transition: width 1s linear;
+  &:after
+  {
+    animation: progress_bar 0.8s linear infinite;
+
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-size: 40px 40px;
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

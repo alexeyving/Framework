@@ -1,0 +1,13 @@
+extends ../extends/index-extend
+block content
+	.center-table
+		.center-table__row
+			.center-table__cell
+				div
+					.max-w-288.center-block.m-b-43
+						img.img-responsive(src='./assets/payment-progress.svg')
+					.center-block.max-w-240
+						.large-text.m-b-20
+							|	Пожалуйста, подождите. Идет
+							|	авторизация Вашего платежа.
+						+progressbar('100', '100')

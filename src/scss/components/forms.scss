@@ -1,0 +1,140 @@
+input, button, .button {
+	-webkit-font-smoothing: antialiased;
+}
+
+label {
+	font-weight: normal;
+	cursor: pointer;
+	font-size: $font-s;
+	color: $base-l;
+}
+
+input {
+	border-radius: $brad;
+	border: solid 1px $base;
+	height: 30px;
+	padding: 5px 6px;
+	width: 100%;
+	background-position: 150%;
+	@include transition(background-position, border-color);
+
+	&:-ms-input-placeholder { /* IE10–11 */
+		color: $base-l !important;
+		font-weight: 400 !important;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&[isFailed] {
+		border: 1px solid $brand;
+	}
+
+	&.visa {
+		background-image: url(~assets/visa2.svg);
+		background-repeat: no-repeat;
+		background-position: calc(100% - 6px) center;
+		background-size: 49px 16px;
+	}
+	&.mastercard {
+		background-image: url(~assets/mc.svg);
+		background-repeat: no-repeat;
+		background-position: calc(100% - 6px) center;
+		background-size: 29px 23px;
+	}
+	&.maestro {
+		background-image: url(~assets/maestro.svg);
+		background-repeat: no-repeat;
+		background-position: calc(100% - 6px) center;
+		background-size: 38px 23px;
+	}
+	&[isDisabled], &[disabled] {
+		cursor: not-allowed !important;
+		background-color: $disabled-input-bg;
+		opacity: 1;
+	}
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	appearance: none !important;
+	margin: 0;
+}
+
+::-ms-clear {
+	//ie cross
+	display: none;
+}
+
+input[type=number] {-moz-appearance: textfield;}
+
+input[type=checkbox] {
+	appearance: none !important;
+	display: none;
+	@include colored-checkbox($border-color: $base, $color: $brand);
+	$size: 16px;
+
+	@supports (-ms-ime-align:auto) {
+		appearance: checkbox !important;
+	}
+	& + .fake-label {
+		border-radius: $brad;
+		border-width: 1px;
+		cursor: pointer;
+		width: $size;
+		height: $size;
+		vertical-align: middle;
+		margin: 0 5px 3px 0;
+		background-color: white;
+	}
+
+
+	& + .fake-label, &:focus + .fake-label{
+		outline: none;
+		border-style: solid;
+	}
+
+	&[disabled] + .fake-label {
+		cursor: default;
+		opacity: 0.5;
+		& + label, & + .label {
+			cursor: auto;
+		}
+	}
+}
+.true-label.clicked {
+	outline: none;
+}
+
+button, .button.submit {
+	@include colored-button(
+			$color: white,
+			$color-background: $brand,
+			$hover-background: $brand-s,
+			$active-background: $brand-l,
+			$active-color: white,
+			$loader: '~assets/ripple-submit.gif'
+	)
+}
+
+.button.submit, button.submit {
+	&.disabled, &[isDisabled] {
+		color: $main-white !important;
+	}
+}
+
+.button.delete {
+	@include colored-button(
+			$color: $base-l,
+			$color-background: transparent,
+			$hover-background: $base-xs,
+			$hover-color: $base-xxl,
+			$active-background: $base-s,
+			$active-color: $base-l,
+			$loader: '~assets/ripple-delete.gif'
+	);
+	border: solid 1px $base;
+	min-width: 88px;
+	font-style: $font-s;
+	font-weight: 400;
+}

@@ -1,0 +1,27 @@
+.s-bg-base {
+	background-color: $base-xxl;
+}
+
+.s-bg-black {
+	background-color: #000;
+}
+
+.s-brad {
+	border-radius: $brad;
+}
+
+.s-bg-repeat-grad {
+	background: repeating-linear-gradient(
+					45deg,
+					#d6d6d6,
+					#d6d6d6 3px,
+					$base-xs 3px,
+					$base-xs 8px
+	);
+}
+
+.ic-plus {
+	width: 50px;
+	height: 50px;
+	background-image: url('~assets/ic-add.svg');
+}

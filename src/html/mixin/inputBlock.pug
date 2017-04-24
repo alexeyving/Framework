@@ -1,0 +1,4 @@
+include input
+mixin inputBlock(title, id, classInput, type, placeholder)
+   label(for=id)= title
+   +input(id, classInput, type, placeholder)&attributes(attributes)

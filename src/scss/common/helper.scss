@@ -1,0 +1,87 @@
+.t-a-r {
+	text-align: right;
+}
+
+.t-a-l {
+	text-align: left;
+}
+
+.t-a-c {
+	text-align: center;
+}
+.t-underline {
+	text-decoration: underline;
+}
+.t-nowrap {
+	white-space: nowrap;
+}
+.t-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.large-text {
+	font-size: $font-l;
+	line-height: $font-l + 3px;
+}
+
+.regular-text {
+	font-size: $font;
+	line-height: $font + 4px;
+}
+
+.small-text {
+	font-size: $font-s;
+	line-height: $font-s + 4px;
+}
+
+.f-base-s {
+	color: $base-s;
+}
+
+.f-base {
+	color: $base;
+}
+
+.f-base-xxl {
+	color: $base-xxl;
+}
+
+.f-base-l {
+	color: $base-l;
+}
+
+.f-base-xl {
+	color: $base-xl;
+}
+
+.f-brand {
+	color: $brand;
+}
+//TODO Alesha remove this sheet
+.f-lh-28 {
+	line-height: 28px !important;
+}
+
+@media (max-width: $screen-sm) {
+	.sm\(t-a-l\) {
+		text-align: left;
+	}
+}
+
+@media (max-width: $screen-md) {
+	.md\(t-a-center\) {
+		text-align: center;
+	}
+	.md\(l-w-100p\) {
+		width: 100%;
+	}
+}
+
+.list-inline {
+	& > li {
+		display: inline-block;
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+}

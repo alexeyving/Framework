@@ -1,0 +1,62 @@
+extends ../extends/index-extend
+block content
+	.p-t-100
+		.col-xs-12.l-mb-30
+			h1 Uniteller palette
+			.row
+				.col-xs-3
+					h3 Input
+					+inputBlock('Default','input-default', 'l-w-100p l-mb-20', 'text', 'XXXX XXXX XXXX XXXX')
+					+inputBlock('Visa','input-visa', 'l-w-100p l-mb-20 visa', 'text', 'XXXX XXXX XXXX XXXX')
+					+inputBlock('Mastercard','input-mastercard', 'l-w-100p l-mb-20 mastercard', 'text', 'XXXX XXXX XXXX XXXX')
+					+inputBlock('Maestro','input-maestro', 'l-w-100p l-mb-20 maestro', 'text', 'XXXX XXXX XXXX XXXX')
+					+inputBlock('Error','input-error', 'l-w-100p l-mb-20', 'text', 'XXXX XXXX XXXX XXXX')
+					+inputBlock('Disabled','input-disabled', 'l-w-100p', 'text', 'XXXX XXXX XXXX XXXX')
+				.col-xs-4
+					.row
+						.col-xs-6
+							h3 Submit button
+							label(for="button-submit-default") Default
+							button#button-submit-default.l-w-100p.l-h-40.l-mb-20.submit Оплатить
+							label(for="button-submit-hover") Hover
+							button#button-submit-hover.l-w-100p.l-h-40.l-mb-20.submit Оплатить
+							label(for="button-submit-active") Active
+							button#button-submit-active.l-w-100p.l-h-40.l-mb-20.submit Оплатить
+							label(for="button-submit-disabled") Disabled
+							button#button-submit-disabled.l-w-100p.l-h-40.l-mb-20.submit Оплатить
+							label(for="button-submit-loading") Loading
+							button#button-submit-loading.l-w-100p.l-h-40.l-mb-20.submit Оплатить
+
+						.col-xs-6
+							h3 Delete button
+							label(for="button-delete-default") Default
+							button#button-delete-default.button.delete.l-w-100p.l-h-40.l-mb-20 Удалить
+							label(for="button-delete-hover") Hover
+							button#button-delete-hover.button.delete.l-w-100p.l-h-40.l-mb-20 Удалить
+							label(for="button-delete-active") Active
+							button#button-delete-active.button.delete.l-w-100p.l-h-40.l-mb-20 Удалить
+							label(for="button-delete-disabled") Disabled
+							button#button-delete-disabled.button.delete.l-w-100p.l-h-40.l-mb-20 Удалить
+							label(for="button-delete-loading") Loading
+							button#button-delete-loading.button.delete.l-w-100p.l-h-40.l-mb-20 Удалить
+				.col-xs-1
+					h3 Checkbox
+					.l-mb-20
+						+checkbox('Default', 'checkbox-default')
+					.l-mb-20
+						+checkbox('Hover', 'checkbox-hover')
+					.l-mb-20
+						+checkbox('Active', 'checkbox-active')
+				.col-xs-4
+					h3 Select
+					.title Выберите карту
+					.wrapper-select
+						select
+
+block scripts
+	script(type="text/javascript").
+		window.onload = function () {
+			new App.views.paletteView({ctx: '.wrapper'});
+		};
+
+

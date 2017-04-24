@@ -1,0 +1,23 @@
+//.clearfix.confirmation-wrapper
+.selection-inner
+	img.max-w-30(src=imgUrl alt=id)
+	if number
+		.select2-selected
+			div
+				div.select2-selected__text.t-ellipsis
+					|#{text}
+					span.select2-selection__arrow(role="presentation")
+						b(role="presentation")
+			div
+				|#{number}
+		.button.delete.js-remove-card Удалить
+	else
+		.select2-selected.large-text.f-lh-28.p-r-20
+			|#{text}
+			span.select2-selection__arrow(role="presentation")
+				b(role="presentation")
+	.confirmation
+		span Вы уверены?
+		div.confirmation__holder
+			.button.submit#js-confirmation-yes Да
+			.button.delete#js-confirmation-no Нет

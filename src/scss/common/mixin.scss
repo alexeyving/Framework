@@ -1,0 +1,141 @@
+@function str-replace($source, $substring, $replacement, $fail-silently: false) {
+	$start: str-index($source, $substring);
+	@if $start {
+		@return str-slice($source, 1, $start - 1)  + $replacement + str-slice($source, $start + str-length($substring))
+	}
+	@if $fail-silently {
+		@return $source;
+	} @else {
+		@error "'#{$substring}' was not found in '#{$source}'";
+	}
+}
+
+// Usage:   @include transition(width, height 0.4s ease);
+// Output:  transition(width 0.3s ease-in-out, height 0.4s ease);
+//
+// Pass in any number of transitions
+@mixin transition($transitions...) {
+	$unfoldedTransitions: ();
+	@each $transition in $transitions {
+		$unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
+	}
+
+	transition: $unfoldedTransitions;
+}
+
+@function unfoldTransition ($transition) {
+	// Default values
+	$property: all;
+	$duration: .3s;
+	$easing: ease-in-out;
+	$delay: null; // Browser default is 0, which is what we want
+	$defaultProperties: ($property, $duration, $easing, $delay);
+
+	// Grab transition properties if they exist
+	$unfoldedTransition: ();
+	@for $i from 1 through length($defaultProperties) {
+		$p: null;
+		@if $i <= length($transition) {
+			$p: nth($transition, $i)
+		} @else {
+			$p: nth($defaultProperties, $i)
+		}
+		$unfoldedTransition: append($unfoldedTransition, $p);
+	}
+
+	@return $unfoldedTransition;
+}
+
+@mixin colored-checkbox($border-color, $color, $background: white) {
+	& + .fake-label{
+		border-color: $border-color;
+		background-color: $background;
+		background-position-y: 1px;
+		background-repeat: no-repeat;
+		@include transition(background-color);
+	}
+
+	&:checked + .fake-label{
+		background-image: url('~assets/checkbox.png');
+		background-size: 13px 12px;
+
+		&:not(*:root) {
+			//Webkit browser hack
+			background-image: url('data:image/svg+xml;utf-8,<svg width="12.572" height="11.941" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			 <polyline transform="translate(-3.4006 -.028252)" points="4.4098 6.4372 8.2613 10.969 14.964 1.0401" fill="none" stroke="#{str-replace(quote($color), "#", "%23")}" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+			</svg>');
+		}
+		body:not(:-moz-handler-blocked) & {
+			//firefox browser hack
+			background-image: url('data:image/svg+xml;utf-8,<svg width="12.572" height="11.941" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			 <polyline transform="translate(-3.4006 -.028252)" points="4.4098 6.4372 8.2613 10.969 14.964 1.0401" fill="none" stroke="#{str-replace(quote($color), "#", "%23")}" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+			</svg>');
+		}
+	}
+	&:not(:checked) + .fake-label:hover {
+		background: $base-xs;
+	}
+}
+
+@mixin colored-button(
+	$color,
+	$color-background,
+	$hover-background,
+	$active-background,
+	$hover-color: '',
+	$active-color: '',
+	$loader: '~assets/ripple.svg'
+) {
+	$colored-duration: .3s;
+
+	@if $hover-color == '' {
+		$hover-color: $color;
+	}
+	@if $active-color == '' {
+		$active-color: $color;
+	}
+
+	border: none;
+	outline: none;
+	cursor: pointer;
+	color: $color;
+	background-color: $color-background;
+	border-radius: $brad;
+
+	min-width: 124px;
+	max-width: 260px;
+	text-align: center;
+	user-select: none;
+	display: inline-block;
+	vertical-align: middle;
+	font-weight: 600;
+
+	&:not([disabled]) {
+		cursor: pointer;
+	}
+	&.disabled, &[isDisabled] {
+		color: $base-xl !important;
+		opacity: 0.5 !important;
+		cursor: not-allowed !important;
+	}
+	&:not([disabled]):not(.is-loading):hover, &[isHovered], &.hover, &:not([disabled]):not(.is-loading):focus {
+		background-color: $hover-background;
+		color: $hover-color;
+	}
+	&[isHovered], &.hover, &[isActive], &.active {
+		pointer-events: none;
+	}
+	&:not([disabled]):not(.is-loading):active, &[isActive], &.active {
+		background-color: $active-background !important;
+		color: $active-color !important;
+	}
+
+	@if $loader != '' {
+		&.is-loading, &[isLoading] {
+			text-indent: -9999px;
+			background: $hover-background url($loader) no-repeat center center;
+		}
+	}
+
+	@include transition(color, background-color);
+}
